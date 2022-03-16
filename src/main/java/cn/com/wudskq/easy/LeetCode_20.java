@@ -26,12 +26,12 @@ public class LeetCode_20 {
         this.hashMap = new HashMap<>();
         hashMap.put(')', '(');
         hashMap.put(']', '[');
-        hashMap.put('{', '}');
+        hashMap.put('}', '{');
     }
 
 
     public static void main(String[] args) {
-        String s = "()";
+        String s = "()[]{}";
         LeetCode_20 obj = new LeetCode_20();
         System.out.println(obj.isValid(s));
     }
