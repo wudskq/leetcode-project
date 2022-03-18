@@ -116,3 +116,36 @@
   - 实例化一个HashSet,借助HashSet元素不能重复特性实现该算法
   - 遍历数组,遍历过程中判断该元素是否包含于hashMap中,若包含则返回ture,若不包含则将该元素加入到hash中,
   - 直到数组遍历完成,若还没有则返回false
+
+### 202.快乐数
+
+- 描述:编写一个算法来判断一个数 n 是不是快乐数,快乐数定义为: 对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。
+  如果这个过程 结果为 1，那么这个数就是快乐数。
+  如果 n 是 快乐数 就返回 true ；不是，则返回 false
+
+- 链接：https://leetcode-cn.com/problems/happy-number
+
+- 核心思想: 
+
+  - 先创建一个可以计算整数平方和的函数,在实例化一个hashSet
+
+    ```java
+    public int squareSum(int number){
+      int totalNum = 0;
+      while(number >0){
+        int data = number %10;
+        number = number /10;
+        total += data*data;
+      }
+    }
+    ```
+
+  - 循环将计算出的平方和加入到set中去,并在循环过程中判断结果是否等于1或者set中是否包含计算出的结果,
+
+  - 若不等于1或者包含则证明该数计算的平方和结果出现了重复,即不为快乐数,
+
+  - 反之则将数据循环加入到set中,直到循环遍历完成之后,最后返回结果
+
+- leetcode情况分析图示:
+
+  ![image-20220319030159387](https://gitee.com/wudskq/cloud_img/raw/master/data/20220319030204.png)
