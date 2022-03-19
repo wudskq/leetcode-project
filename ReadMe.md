@@ -160,3 +160,37 @@
 - leetcode情况分析图示:
 
   ![image-20220319030159387](https://gitee.com/wudskq/cloud_img/raw/master/data/20220319030204.png)
+
+### 219.数组中是否存在重复元素(pro)
+
+- 描述: 给你一个整数数组 nums 和一个整数 k ，判断数组中是否存在两个 不同的索引 i 和 j ，满足 nums[i] == nums[j] 且 abs(i - j) <= k 。如果存在，返回 true ；否则，返回 false
+
+- 链接：https://leetcode-cn.com/problems/contains-duplicate-ii
+
+- 核心思想:
+
+  - 创建一个hashMap,Key存储数组的值,Value存储数组的下标
+
+  - 循环遍历数组,判断集合中是否包含相同的值,并且同时判断是否满足大的下标减去小的下标小于等于K
+
+  - 反之将数据加入到map
+
+  - 核心代码:
+
+    ```java
+    //key存数组的数据,value存储数组的下标
+    HashMap<Integer, Integer> hashMap = new HashMap<>();
+    //存储数据下标
+    List<Integer> list = new ArrayList<Integer>();
+    for (int i = 0; i < nums.length; i++) {
+      //判断hash中是否包含相同的值,并且大的下标减去小的下标是否满足小于等于k
+      if(hashMap.containsKey(nums[i]) && i - hashMap.get(nums[i]) <= k){
+        return true;
+      }else {
+        hashMap.put(nums[i],i);
+      }
+    }
+    return false;
+    ```
+
+    
