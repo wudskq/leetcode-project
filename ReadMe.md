@@ -146,6 +146,17 @@
 
   - 反之则将数据循环加入到set中,直到循环遍历完成之后,最后返回结果
 
+    ```java
+    public boolean isHappy(int n){
+      Hashset hash = new Hashset<Integer>();
+      while(n !=1 && !hashSet.contains(n)){
+        hash.add(n);
+        n = squareSum(n);
+      }
+      return n ==1;
+    }
+    ```
+
 - leetcode情况分析图示:
 
   ![image-20220319030159387](https://gitee.com/wudskq/cloud_img/raw/master/data/20220319030204.png)
