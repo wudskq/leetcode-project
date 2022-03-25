@@ -193,4 +193,17 @@
     return false;
     ```
 
-    
+
+### 314.两个数组的交集
+
+- 描述:给定两个数组 nums1 和 nums2 ，返回 它们的交集 。输出结果中的每个元素一定是 唯一 的。我们可以 不考虑输出结果的顺序
+
+- 链接: https://leetcode-cn.com/problems/intersection-of-two-arrays/submissions/
+
+- haseSet核心思想: 
+
+  - 创建新的list
+
+  - nums1转为list并去重,创建一个haseSet,用来存放nums1的数据
+  - nums2遍历过程中并进行判断hashSet是否包含,若包含则将数据存入到一个list
+  - 最后转换list为数组并返回
