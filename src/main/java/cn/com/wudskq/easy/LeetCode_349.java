@@ -21,7 +21,7 @@ public class LeetCode_349 {
 
     public static void main(String[] args) {
         LeetCode_349 leetCode349 = new LeetCode_349();
-        int[] intersection = leetCode349.intersection(nums1, nums2);
+        int[] intersection = leetCode349.intersection1(nums1, nums2);
         System.out.println(intersection.toString());
     }
 
@@ -53,4 +53,23 @@ public class LeetCode_349 {
         }
         return resArray;
     }
+
+    public int[] intersection1(int[] nums1, int[] nums2){
+        //存储nums1数据
+        HashSet<Integer> set1 = new HashSet<>();
+        //存储结果
+        HashSet<Integer> set2 = new HashSet<>();
+        //存储num2数据
+        ArrayList<Integer> list = new ArrayList<>();
+        for (Integer item:nums1) {
+            set1.add(item);
+        }
+        for (Integer item:nums2) {
+            list.add(item);
+        }
+        list.retainAll(set1);
+        set2.addAll(list);
+        return set2.stream().mapToInt(i->i).toArray();
+    }
+
 }
