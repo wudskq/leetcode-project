@@ -159,7 +159,7 @@
 
 - leetcode情况分析图示:
 
-  ![image-20220319030159387](https://gitee.com/wudskq/cloud_img/raw/master/data/20220319030204.png)
+  ![image-20220319030159387](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220319030204.png)
 
 ### 219.数组中是否存在重复元素(pro)
 
