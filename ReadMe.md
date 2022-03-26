@@ -218,8 +218,39 @@
 ### 169. 多数元素
 
 - 描述: 给定一个大小为 *n* 的数组，找到其中的多数元素。多数元素是指在数组中出现次数 **大于** `⌊ n/2 ⌋` 的元素
+
 - 链接: https://leetcode-cn.com/problems/majority-element/
-- 核心思想1:
+
+- 核心思想1(hashMap):
+
   - 实例化一个hashMap,用来记录数组中每个元素出现的次数,key存数组中的数据,value存储该元素出现的次数
   - 遍历完成后,转换map为set,并将set进行遍历比较value哪个大,最后将大的对象赋值给Map.Entry
 
+- 核心思想2(摩尔投票法):
+
+  - 创建一个候选人与一个票数的变量
+  - 遍历数组,并将候选人初始值设置为nums[0],count=1
+  - 遇到与候选人相同的则票数加一,否则票数减一
+  - 并在遍历过程中判断票数是否等于零,若等于零则重置候选人与票数
+  - 核心代码
+
+  ```java
+  //摩尔投票法
+  public  int majorityElement1(int[] nums) {
+    int cand_num = nums[0];
+    int count = 1;
+    for (int i = 1; i < nums.length; i++) {
+      //如果数组第一个元素与后面元素相同
+      //则票数+1 //否则票数-1
+      count += cand_num == nums[i]? 1:-1;
+      //票数等于0时 更换候选人
+      if( count == 0){
+        cand_num = nums[i];
+        count = 1;
+      }
+    }
+    return cand_num;
+  }
+  ```
+
+  

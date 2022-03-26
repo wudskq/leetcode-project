@@ -13,11 +13,11 @@ import java.util.Set;
  */
 public class LeetCode_169 {
 
-    static int[] nums = {2,2,1,1,1,2,2};
+    static int[] nums = {1,1,1,2,3,4,4,4,4,1,1};
 
     public static void main(String[] args) {
         LeetCode_169 leetCode169 = new LeetCode_169();
-        System.out.println(leetCode169.majorityElement(nums));
+        System.out.println(leetCode169.majorityElement1(nums));
     }
 
     public int majorityElement(int[] nums) {
@@ -43,6 +43,23 @@ public class LeetCode_169 {
         }
         //最后返回
         return majorityEntry.getKey();
+    }
+
+    //摩尔投票法
+    public  int majorityElement1(int[] nums) {
+        int cand_num = nums[0];
+        int count = 1;
+        for (int i = 1; i < nums.length; i++) {
+            //如果数组第一个元素与后面元素相同
+            //则票数+1 //否则票数-1
+            count += cand_num == nums[i]? 1:-1;
+            //票数等于0时 更换候选人
+            if( count == 0){
+                cand_num = nums[i];
+                count = 1;
+            }
+        }
+        return cand_num;
     }
 
 }
