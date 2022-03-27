@@ -262,3 +262,23 @@
   - 通过辅助节点遍历该链表,直至该链表为空(即到尾部为止),
   - 在遍历过程中判断是否有节点的值与val相同,相同则删除该节点,反之指针后移
   - 最后返回该虚拟节点的next指针所指节点,即为新的head
+
+### 206. 反转单向链表
+
+- 描述: 给你单链表的头节点 `head` ，请你反转链表，并返回反转后的链表。
+
+- 链接: https://leetcode-cn.com/problems/reverse-linked-list/
+
+- 核心思想: 
+
+  - 创建辅助指针Pre,Current,Next.(分别代表前一个节点,当前节点,及后一个节点)
+  - 初始化Pre为NULL,Current等于Head,Next为NULL
+  - 遍历链表,在遍历过程中,使当前节点的next指针指向Pre,随后移动Pre到当前节点,移动Current到Next节点
+  - 直至Current 等于NULL时,则证明到了链表尾部,最后返回Pre
+
+- 图示:
+
+  ![image-20220327210633126](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220327211838.png)
+
+  ![image-20220327212205110](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220327212205.png)
+
