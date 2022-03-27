@@ -52,15 +52,17 @@ public class LeetCode_203 {
         }
         return var.next;
     }
+
+    @Data
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
 }
 
-@Data
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
 
 
 
