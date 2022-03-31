@@ -282,3 +282,16 @@
 
   ![image-20220327212205110](https://aliyun-images-service.oss-cn-hangzhou.aliyuncs.com/wudskq/data/20220327212205.png)
 
+### 26.原地移除数组中重复元素
+
+- 描述: 给你一个 **升序排列** 的数组 `nums` ，请你**[ 原地](http://baike.baidu.com/item/原地算法)** 删除重复出现的元素，使每个元素 **只出现一次** ，返回删除后数组的新长度。元素的 **相对顺序** 应该保持 **一致** 。
+
+- 链接: https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
+
+- 核心思想: 使用快慢指针解决该问题
+
+  - 创建slow,fast指针,并使其初始化值为1,快指针用来遍历数组,慢指针用来重新覆盖数组值
+
+  - 无限循环,并在循环中判断快指针所指向的值是否与前一个值想等,若不想等,则使用slow慢指针重新覆盖数组
+
+    并且快慢指针同时加1,直到fast快指针大于数组长度时(即该数组已遍历到最后)
