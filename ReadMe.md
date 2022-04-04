@@ -295,3 +295,54 @@
   - 无限循环,并在循环中判断快指针所指向的值是否与前一个值想等,若不想等,则使用slow慢指针重新覆盖数组
 
     并且快慢指针同时加1,直到fast快指针大于数组长度时(即该数组已遍历到最后)
+
+### 383.赎金信
+
+- 描述:
+
+- 给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。
+
+  如果可以，返回 true ；否则返回 false 。
+
+  magazine 中的每个字符只能在 ransomNote 中使用一次。
+
+- 链接: https://leetcode-cn.com/problems/ransom-note/
+
+- 核心思想1:
+
+  - 创建hashMap,key存储该下标,value存储值
+  - 遍历magazine字符串,存入到hashMap中
+  - 接着再遍历 ransomNote字符串中的每个字符,并判断hashMap包含此字符串,若包含找到该字符串对应的key,并在hashMap中删除,若不包含则直接返回false
+  - 核心代码:
+
+  ```java
+  public boolean canConstruct(String ransomNote, String magazine) {
+    HashMap<Integer,Character> hashMap = new HashMap<>();
+    //magazine数据入map
+    for (int i = 0; i <  magazine.length(); i++) {
+      hashMap.put(i,magazine.charAt(i));
+    }
+    //ransomNote依次去匹配
+    for (int i = 0; i < ransomNote.length(); i++) {
+      char data = ransomNote.charAt(i);
+      //ransomNote每个字符与map中的每个值做对比
+      for(Map.Entry<Integer, Character> entry : hashMap.entrySet()) {
+        //判断是否包含在map的Values中
+        //若不包含则证明ransomNote中的字符,magazine中找不到直接返回false即可
+        if(hashMap.containsValue(data)){
+          //比对成功直接移除map中的值退出
+          if(entry.getValue().equals(data)){
+            hashMap.remove(entry.getKey());
+            //map中的值每个值只能用一次
+            break;
+          }
+        }else {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  ```
+
+  
