@@ -345,4 +345,38 @@
   }
   ```
 
+
+### 35.搜索插入位置
+
+- 描述: 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+
+  请必须使用时间复杂度为 O(log n) 的算法。
+
+- 链接: https://leetcode-cn.com/problems/search-insert-position
+
+- 核心思想:
+
+  - 使用二分法查找即可
+
+- 核心代码
+
+  ```java
+   public int searchInsert(int[] nums, int target) {
+          int left = 0;
+          int right = nums.length;
+          int res = 0;
+          while (left <= right){
+              int mid = left + (right-left)/2;
+              int num = nums[mid];
+              if(target <= num){
+                  res = mid;
+                  right = mid -1;
+              }else {
+                  left = mid +1;
+              }
+          }
+          return res;
+      }
+  ```
+
   
