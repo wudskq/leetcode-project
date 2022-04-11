@@ -361,10 +361,9 @@
 - 核心代码
 
   ```java
-   public int searchInsert(int[] nums, int target) {
-          int left = 0;
-          int right = nums.length;
-          int res = 0;
+   int left = 0;
+          int right = nums.length -1 ;
+          int res = nums.length;
           while (left <= right){
               int mid = left + (right-left)/2;
               int num = nums[mid];
@@ -376,7 +375,6 @@
               }
           }
           return res;
-      }
   ```
 
   
