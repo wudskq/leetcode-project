@@ -385,7 +385,7 @@
 
 - 链接：https://leetcode-cn.com/problems/implement-strstr
 
-- 核心思想: 两种解法 > 1.调用Java原生API 2.使用KMP算法
+- 核心思想: 两种解法 > 1.调用Java原生API 2.暴力算法 3.使用KMP算法 
 
 - 原生API核心代码
 
@@ -393,6 +393,38 @@
   public static int strStr(String haystack, String needle) {
     int i = haystack.indexOf(needle);
     return i;
+  }
+  ```
+
+- 暴力算法
+
+  ```java
+  //暴力算法
+  public static int strStr1(String haystack, String needle) {
+    //主串
+    char[] master = haystack.toCharArray();
+    //主串位置
+    int i =0;
+    //模式串
+    char[] pattern = needle.toCharArray();
+    //模式串位置
+    int j =0;
+    while (i < master.length && j < pattern.length){
+      if(master[i] == pattern[j]){
+        i++;
+        j++;
+      }else {
+        //主串位置后移一位
+        i = i-j+1;
+        //模式串位置重置
+        j = 0;
+      }
+    }
+    if(j == pattern.length){
+      return i -j;
+    }else {
+      return -1;
+    }
   }
   ```
 
