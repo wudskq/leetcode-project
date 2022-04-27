@@ -378,3 +378,22 @@
   ```
 
   
+
+### 28.实现 strStr() 函数
+
+- 描述: 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回  -1 。
+
+- 链接：https://leetcode-cn.com/problems/implement-strstr
+
+- 核心思想: 两种解法 > 1.调用Java原生API 2.使用KMP算法
+
+- 原生API核心代码
+
+  ```java
+  public static int strStr(String haystack, String needle) {
+    int i = haystack.indexOf(needle);
+    return i;
+  }
+  ```
+
+  
