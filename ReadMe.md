@@ -440,7 +440,48 @@
 
 - 核心思想:
 
+### 387. 字符串中的第一个唯一字符
+
+- 描述: 给定一个字符串 `s` ，找到 *它的第一个不重复的字符，并返回它的索引* 。如果不存在，则返回 `-1` 
+
+- 链接: https://leetcode-cn.com/problems/first-unique-character-in-a-string/
+
+- 核心思想:
+
+  - 创建hashMap存储字符串值与下标
+  - 创建临时字符存储字符中出现过的元素
+  - 遍历字符串,若重复则移除或不做任何操作,不重复则存储进入hashMap中
+  - 最后hashMap转为list并进行排序,返回list的第一个元素的下标即可
+
+- 核心代码:
+
+  ```java
+  /* 给定一个字符串 s ，找到 它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回 -1 */
+  public static int firstUniqChar(String s) {
+    HashMap<Character, Integer> hashMap = new HashMap<>();
+    int length = s.length();
+    String element = "";
+    for (int i = 0; i < length; i++) {
+      char c = s.charAt(i);
+      //判断元素是否之前出现过 出现过不做任何操作
+      if(element.contains(String.valueOf(c))){
+      }else if(hashMap.containsKey(c)){
+        //重复时移除元素
+        element += c;
+        hashMap.remove(c);
+      }else {
+        //存入数据 key=值 value=下标
+        hashMap.put(c,i);
+      }
+    }
+    List<Integer> collect = hashMap.values().stream().sorted().collect(Collectors.toList());
+    if(null != collect && 0 < collect.size()){
+      return collect.get(0);
+    }else {
+      return -1;
+    }
+  }
+  ```
+
   
-
-
 
