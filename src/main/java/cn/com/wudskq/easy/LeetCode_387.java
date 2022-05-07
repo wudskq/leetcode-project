@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 public class LeetCode_387 {
 
 
-    static String s = "aadadaad";
+    static String s = "aadadaadv";
 
     public static void main(String[] args) {
-        System.out.println(firstUniqChar(s));
+        System.out.println(firstUniqChar1(s));
     }
 
     /* 给定一个字符串 s ，找到 它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回 -1 */
@@ -43,5 +43,33 @@ public class LeetCode_387 {
         }else {
             return -1;
         }
+    }
+
+    /* 给定一个字符串 s ，找到 它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回 -1 */
+    public static int firstUniqChar1(String s) {
+        //记录字符出现频次
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+        int length = s.length();
+        //默认频次等于0
+        int count = 0;
+        for (int i = 0; i < length; i++) {
+            char c = s.charAt(i);
+            if(hashMap.containsKey(c)){
+                //出现次数加1
+                Integer value = hashMap.get(c);
+                hashMap.put(c,value+1);
+            }else {
+                hashMap.put(c,count+1);
+            }
+        }
+        //判断出现频次等于一的第一个元素
+        for (int i = 0; i < length; i++) {
+            char c = s.charAt(i);
+            Integer value = hashMap.get(c);
+            if(value == 1){
+                return i;
+            }
+        }
+        return -1;
     }
 }
